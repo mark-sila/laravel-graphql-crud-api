@@ -26,7 +26,7 @@ return [
 
     // The name of the default schema
     // Used when the route group is directly accessed
-    'default_schema' => 'auth',
+    'default_schema' => 'guest',
 
     'batching' => [
         // Whether to support GraphQL batching or not.
