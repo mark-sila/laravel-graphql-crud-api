@@ -26,7 +26,7 @@ return [
 
     // The name of the default schema
     // Used when the route group is directly accessed
-    'default_schema' => 'default',
+    'default_schema' => 'auth',
 
     'batching' => [
         // Whether to support GraphQL batching or not.
@@ -73,20 +73,57 @@ return [
     //  ]
     //
     'schemas' => [
-        'default' => [
+        'auth' => [
             'query' => [
-                // ExampleQuery::class,
+                \App\GraphQL\Queries\UserQuery::class
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                \App\GraphQL\Mutations\LogoutUserMutation::class,
+                \App\GraphQL\Mutations\CreateTaskMutation::class,
+                \App\GraphQL\Mutations\UpdateTaskMutation::class,
+                \App\GraphQL\Mutations\DeleteTaskMutation::class,
             ],
             // The types only available in this schema
             'types' => [
-                // ExampleType::class,
+                \App\GraphQL\Types\UserType::class,
+                \App\GraphQL\Types\TaskType::class
             ],
 
             // Laravel HTTP middleware
-            'middleware' => null,
+            'middleware' => ['auth:api'],
+
+            // Which HTTP methods to support; must be given in UPPERCASE!
+            'method' => ['GET', 'POST'],
+
+            // An array of middlewares, overrides the global ones
+            'execution_middleware' => null,
+        ],
+        'guest' => [
+            'query' => [],
+            'mutation' => [
+                \App\GraphQL\Mutations\LoginUserMutation::class,
+            ],
+            // The types only available in this schema
+            'types' => [],
+
+            // Laravel HTTP middleware
+            'middleware' => ['guest'],
+
+            // Which HTTP methods to support; must be given in UPPERCASE!
+            'method' => ['GET', 'POST'],
+
+            // An array of middlewares, overrides the global ones
+            'execution_middleware' => null,
+        ],
+
+        'default' => [
+            'query' => [],
+            'mutation' => [],
+            // The types only available in this schema
+            'types' => [],
+
+            // Laravel HTTP middleware
+            'middleware' => [],
 
             // Which HTTP methods to support; must be given in UPPERCASE!
             'method' => ['GET', 'POST'],
@@ -118,7 +155,7 @@ return [
     //     'message' => '',
     //     'locations' => []
     // ]
-    'error_formatter' => [Rebing\GraphQL\GraphQL::class, 'formatError'],
+    'error_formatter' => [App\Exceptions\GraphQLException::class, 'formatError'],
 
     /*
      * Custom Error Handling
