@@ -1,4 +1,4 @@
-# Laravel GraphQL CRUD API
+# Laravel API using GraphQL
 
 Creating API using Laravel GraphQL with Login Authentication.
 
