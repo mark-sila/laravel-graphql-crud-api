@@ -1,6 +1,6 @@
 # Laravel GraphQL CRUD API
 
-Creating API using Laravel GraphQL
+Creating API using Laravel GraphQL with Login Authentication.
 
 ## Installation
 
@@ -22,10 +22,8 @@ Install packages:
 composer install
 ```
 
-#### Laravel
+#### Laravel Sail (Docker)
 
-
-##### Sail (Docker)
 
 You need to create `.env` from the root folder and copy the content of `.env.example` before you run the command below.
 
@@ -55,7 +53,7 @@ docker compose down -v
 You can learn more about [Laravel Sail](https://laravel.com/docs/11.x/sail).
 
 
-##### Artisan Commands
+#### Laravel Artisan Commands
 
 Generate app_key:
 ```bash
@@ -72,12 +70,12 @@ Migrate and Seed:
 ./vendor/bin/sail artisan migrate --seed
 ```
 
-Testing:
+Unit Testing:
 ```bash
 ./vendor/bin/sail artisan test
 ```
 
-##### Login Credentials
+#### Login Credentials
 
 You can check the available email address from your database.
 
