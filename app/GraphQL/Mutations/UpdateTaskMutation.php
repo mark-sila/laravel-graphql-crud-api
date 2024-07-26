@@ -36,7 +36,7 @@ class UpdateTaskMutation extends Mutation
                 'description' => 'The id of associated user to the task.',
             ],
             'name' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'The name of the task.',
             ],
             'status' => [
@@ -50,8 +50,6 @@ class UpdateTaskMutation extends Mutation
     {
         return [
             'id' => ['required', Rule::exists('tasks', 'id')],
-            'user_id' => ['required', Rule::exists('users', 'id')],
-            'name' => ['required'],
             'status' => ['required', 'string']
         ];
     }
