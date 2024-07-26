@@ -41,7 +41,7 @@ Or
 bash ./vendor/bin/sail up
 ```
 
-You can completely rebuild your Sail Images:
+You can also rebuild your Sail Images:
 ```bash
 docker compose down -v
  
