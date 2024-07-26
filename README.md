@@ -55,7 +55,7 @@ You can learn more about [Laravel Sail](https://laravel.com/docs/11.x/sail).
 
 #### Laravel Artisan Commands
 
-Generate app_key:
+Generate AppKey:
 ```bash
 php artisan key:generate
 ```
